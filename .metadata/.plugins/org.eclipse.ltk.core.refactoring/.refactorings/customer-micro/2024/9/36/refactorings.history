@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.customerms.customer_micro&apos; to &apos;com.retail.customer&apos;&#x0D;&#x0A;- Original project: &apos;customer-micro&apos;&#x0D;&#x0A;- Original element: &apos;customer-micro/src/main/java/com.customerms.customer_micro&apos;&#x0D;&#x0A;- Renamed element: &apos;customer-micro/src/main/java/com.retail.customer&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings&#x0D;&#x0A;- Rename subpackages of the package" description="Rename package &apos;com.customerms.customer_micro&apos;" flags="589830" hierarchical="true" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.customerms.customer_micro" name="com.retail.customer" qualified="false" references="true" stamp="1725269603504" textual="false" version="1.0"/>
+</session>

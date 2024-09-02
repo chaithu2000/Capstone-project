@@ -1,0 +1,59 @@
+package com.productms.product_micro.controller;
+
+import com.productms.product_micro.entity.Product;
+import java.util.*;
+import com.productms.product_micro.service.ProductService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/products")
+public class ProductController {
+
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<Product> addProduct(
+            @RequestParam String name,
+            @RequestParam Integer stockQuantity,
+            @RequestParam Double price,
+            @RequestParam String category) {
+            Product product = productService.addProduct(name, stockQuantity, price, category);
+            return ResponseEntity.ok(product);
+        }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        return ResponseEntity.ok(productService.getProductById(id));
+    }
+
+    @PutMapping("/{id}/update-stock")
+    public ResponseEntity<Void> updateStock(@PathVariable Long id, @RequestParam int quantity) {
+        productService.incrementStock(id, quantity);
+        return ResponseEntity.ok().build();
+    }
+    
+    // Get products by name
+    @GetMapping("/search/name")
+    public ResponseEntity<List<Product>> searchProductsByName(@RequestParam String name) {
+        List<Product> products = productService.getProductsByName(name);
+        return ResponseEntity.ok(products);
+    }
+    
+    // Get products by category
+    @GetMapping("/search/category")
+    public ResponseEntity<List<Product>> searchProductsByCategory(@RequestParam String category) {
+        List<Product> products = productService.getProductsByCategory(category);
+        return ResponseEntity.ok(products);
+    }
+    
+    //@PutMapping("/{id}/decrement-stock")
+    //public ResponseEntity<Void> decrementStock(@PathVariable Long id, @RequestParam int quantity) {
+     //   productService.decrementStock(id, quantity);
+       // return ResponseEntity.ok().build();
+   // }
+}
